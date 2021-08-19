@@ -10,6 +10,16 @@ const Index = () => {
                     <a>Contato</a>
                 </Link>
             </div>
+            <div>
+                <Link href='/sobre'>
+                    <a>Sobre</a>
+                </Link>
+            </div>
+            <div>
+                <Link href='/pesquisa'>
+                    <a>Pesquisa</a>
+                </Link>
+            </div>
         </div>
     )
 }
