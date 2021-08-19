@@ -1,9 +1,12 @@
 import React from 'react'
 import '../styles/globals.css'
 
-const App = () => {
+const App = ({Component, pageProps}) => {
     return (
-        <h1>Hello</h1>
+        <div>
+            <h1>Hello</h1>
+            <Component {...pageProps} />
+        </div>
     )
 }
 
