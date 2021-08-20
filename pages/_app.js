@@ -1,18 +1,13 @@
 import React from 'react'
 import '../styles/globals.css'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Layout from '../components/Layout'
 
-const App = ({Component, pageProps}) => {
+const MyApp = ({Component, pageProps}) => {
     return (
-        <div>
-            <Header />
-            <main className="container mx-auto">
-                <Component {...pageProps} />
-            </main>
-            <Footer />
-        </div>
+        <Layout>
+            <Component {...pageProps} />
+        </Layout>
     )
 }
 
-export default App
+export default MyApp
