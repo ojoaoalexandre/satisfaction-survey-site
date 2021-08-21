@@ -1,5 +1,6 @@
 export default async(req, res) => {
     res.end(JSON.stringify({
-        Hello: 'World'
+        showMessage: true,
+        message: 'Essa é a mensagem'
     }))
 }
