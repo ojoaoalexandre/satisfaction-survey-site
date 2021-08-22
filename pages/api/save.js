@@ -4,6 +4,13 @@ import credentials from '../../credentials.json'
 
 const doc = new GoogleSpreadsheet('1VBSCBiaryRYSIFHBrPOKoCHQyvtOU2V0IMedVjgl9ow')
 
+const generateCoupon = () => {
+    const code = parseInt(moment().format('YYMMDDHHmmssSSS'))
+                .toString(16)
+                .toUpperCase()
+    return code.substr(0, 4) + '-' + code.substr(4, 4) + '-' + code.substr(8, 4)
+}
+
 export default async (req, res) => {
     //res.end(req.body)
     try {
@@ -26,7 +33,7 @@ export default async (req, res) => {
         let Promoção = ''
 
         if(showMessage.value === 'VERDADEIRO') {
-            Cupom = 'Novo Cupom'
+            Cupom = generateCoupon()
             Promoção = message.value
         }
 
