@@ -9,7 +9,7 @@ export default async(req, res) => {
         await doc.useServiceAccountAuth(credentials)
         await doc.loadInfo()
 
-        const sheet = doc.sheetsByIndex[0]
+        const sheet = doc.sheetsById['0']
         await sheet.loadCells('A2:B2')
 
         const showMessageSheet = sheet.getCell(1, 0)

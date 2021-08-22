@@ -5,8 +5,8 @@ const Pesquisa = () => {
     const save = async () => {
         const form = {
             Nome: 'Alexandre Bekor',
-            Email: 'staff@agenciabekor.com',
-            Whatsapp: '11000000000'
+            Email: 'teste@teste',
+            Whatsapp: 'teste11'
         }
         try {
             const response = await fetch('/api/save', {
@@ -14,7 +14,6 @@ const Pesquisa = () => {
                 body: JSON.stringify(form)
             })
             const data = await response.json()
-            console.log(data)
         } catch (err) {
             console.log(data)
         }
