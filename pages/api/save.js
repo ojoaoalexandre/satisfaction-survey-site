@@ -1,4 +1,5 @@
 import { GoogleSpreadsheet } from "google-spreadsheet"
+import moment from "moment"
 import credentials from '../../credentials.json'
 
 const doc = new GoogleSpreadsheet('1VBSCBiaryRYSIFHBrPOKoCHQyvtOU2V0IMedVjgl9ow')
@@ -20,6 +21,7 @@ export default async (req, res) => {
         const showMessage = sheetMessage.getCell(1, 0)
         const message = sheetMessage.getCell(1, 1)
 
+        // Define Coupon
         let Cupom = ''
         let Promoção = ''
 
@@ -34,7 +36,8 @@ export default async (req, res) => {
             Whatsapp: form.Whatsapp,
             Cupom,
             Promoção,
-            'Data de Cadastro': new Date()
+            'Data de Cadastro': moment().format('DD/MM/YYYY HH:mm:ss'),
+            Nota: '10'
         })
         res.end(req.body)
     } catch (err) {
