@@ -1,6 +1,6 @@
 import { GoogleSpreadsheet } from "google-spreadsheet"
 
-const doc = new GoogleSpreadsheet('1VBSCBiaryRYSIFHBrPOKoCHQyvtOU2V0IMedVjgl9ow')
+const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
 export default async(req, res) => {
     try{

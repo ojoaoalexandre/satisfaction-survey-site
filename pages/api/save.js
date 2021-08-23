@@ -1,7 +1,7 @@
 import { GoogleSpreadsheet } from "google-spreadsheet"
 import moment from "moment"
 
-const doc = new GoogleSpreadsheet('1VBSCBiaryRYSIFHBrPOKoCHQyvtOU2V0IMedVjgl9ow')
+const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
 const generateCoupon = () => {
     const code = parseInt(moment().format('YYMMDDHHmmssSSS'))
@@ -15,7 +15,7 @@ export default async (req, res) => {
     try {
         await doc.useServiceAccountAuth({
             client_email: process.env.SHEET_CLIENT_EMAIL,
-            private_key: process.env.PRIVATE_KEY
+            private_key: process.env.SHEET_PRIVATE_KEY
         })
         await doc.loadInfo()
 
