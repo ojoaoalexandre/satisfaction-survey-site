@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 const Pesquisa = () => {
+    const [ form, setForm ] = useState({
+        Nome: '',
+        Email: '',
+        Whatsapp: ''
+    })
+
     const save = async () => {
-        const form = {
-            Nome: 'Alexandre Bekor',
-            Email: 'teste@teste',
-            Whatsapp: 'teste11'
-        }
         try {
             const response = await fetch('/api/save', {
                 method: 'POST',
@@ -19,11 +20,24 @@ const Pesquisa = () => {
         }
     }
 
+    const onChange = event => {
+        const value = event.target.value
+        const key = event.target.name
+        setForm(old => ({
+            ...old,
+            [key]: value
+        }))
+    }
+
     return (
         <div>
             <h1>Pesquisa</h1>
             <label>Nome:</label>
-            <input type="text" />
+            <input type="text" onChange={ onChange } name="Nome" value={ form.Nome } />
+            <label>Email:</label>
+            <input type="text" onChange={ onChange } name="Email" value={ form.Email } />
+            <label>Whatsapp:</label>
+            <input type="text" onChange={ onChange } name="Whatsapp" value={ form.Whatsapp } />
             <button onClick={ save }>Enviar</button>
         </div>
     )
