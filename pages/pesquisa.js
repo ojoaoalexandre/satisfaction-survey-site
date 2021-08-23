@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
+import PageTitle from '../components/PageTitle'
 
 const Pesquisa = () => {
     const [ form, setForm ] = useState({
@@ -38,6 +38,7 @@ const Pesquisa = () => {
 
     return (
         <div>
+            <PageTitle title="Pesquisa" />
             <h1>Pesquisa</h1>
             { !success &&
             <div>
