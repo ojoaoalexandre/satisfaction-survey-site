@@ -3,6 +3,11 @@ import moment from "moment"
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
+const fromBase64 = value => {
+    const buffer = new Buffer.from(value, 'base64')
+    return buffer.toString('ascii')
+}
+
 const generateCoupon = () => {
     const code = parseInt(moment().format('YYMMDDHHmmssSSS'))
                 .toString(16)
@@ -15,7 +20,7 @@ export default async (req, res) => {
     try {
         await doc.useServiceAccountAuth({
             client_email: process.env.SHEET_CLIENT_EMAIL,
-            private_key: process.env.SHEET_PRIVATE_KEY
+            private_key: fromBase64(process.env.SHEET_PRIVATE_KEY)
         })
         await doc.loadInfo()
 
