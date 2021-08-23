@@ -1,6 +1,5 @@
 import { GoogleSpreadsheet } from "google-spreadsheet"
 import moment from "moment"
-import credentials from '../../credentials.json'
 
 const doc = new GoogleSpreadsheet('1VBSCBiaryRYSIFHBrPOKoCHQyvtOU2V0IMedVjgl9ow')
 
@@ -14,7 +13,10 @@ const generateCoupon = () => {
 export default async (req, res) => {
 
     try {
-        await doc.useServiceAccountAuth(credentials)
+        await doc.useServiceAccountAuth({
+            client_email: process.env.SHEET_CLIENT_EMAIL,
+            private_key: process.env.PRIVATE_KEY
+        })
         await doc.loadInfo()
 
         // Receive the data form

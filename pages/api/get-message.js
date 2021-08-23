@@ -1,12 +1,13 @@
 import { GoogleSpreadsheet } from "google-spreadsheet"
-import credentials from '../../credentials.json'
 
 const doc = new GoogleSpreadsheet('1VBSCBiaryRYSIFHBrPOKoCHQyvtOU2V0IMedVjgl9ow')
 
 export default async(req, res) => {
-
     try{
-        await doc.useServiceAccountAuth(credentials)
+        await doc.useServiceAccountAuth({
+            client_email: process.env.SHEET_CLIENT_EMAIL,
+            private_key: process.env.SHEET_PRIVATE_KEY
+        })
         await doc.loadInfo()
 
         const sheetMessage = doc.sheetsById['0']
