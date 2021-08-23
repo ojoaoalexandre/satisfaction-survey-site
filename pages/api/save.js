@@ -12,7 +12,7 @@ const generateCoupon = () => {
 }
 
 export default async (req, res) => {
-    //res.end(req.body)
+
     try {
         await doc.useServiceAccountAuth(credentials)
         await doc.loadInfo()
@@ -44,9 +44,15 @@ export default async (req, res) => {
             Cupom,
             Promoção,
             'Data de Cadastro': moment().format('DD/MM/YYYY HH:mm:ss'),
-            Nota: '10'
+            Nota: parseInt(form.Nota)
         })
-        res.end(req.body)
+
+        res.end(JSON.stringify({
+            showCoupon: Cupom !== '',
+            Cupom,
+            Promoção
+        }))
+
     } catch (err) {
         res.end('error')
     }
