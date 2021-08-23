@@ -9,10 +9,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexandrebekor/webapp-satisfaction-survey.git"
-  },
+  "repository": "git+https://github.com/alexandrebekor/webapp-satisfaction-survey.git",
   "keywords": [],
   "author": "Alexandre Bekor (Agência Bekor)",
   "license": "ISC",
