@@ -3,23 +3,24 @@ import Link from 'next/link'
 
 const Header = () => {
     return (
-        <header className="flex justify-between px-10 py-4 bg-gray-100 shadow-md">
-            <h1 className="font-bold">
+        <header className="py-4 bg-gray-800 text-white shadow-md">
+            <div className="mx-auto container flex flex-col sm:flex-row justify-center items-center sm:justify-between">
                 <Link href="/">
-                    <a>Satisfaction Survey</a>
+                    <p className="text-xl">Alexandre<span className="font-bold">Bekor</span></p>
                 </Link>
-            </h1>
-            <nav className="space-x-6">
-                <Link href="/sobre">
-                    <a>Sobre</a>
-                </Link>
-                <Link href="/contato">
-                    <a>Contato</a>
-                </Link>
-                <Link href="/pesquisa">
-                    <a>Pesquisa</a>
-                </Link>
-            </nav>
+
+                <nav className="space-x-6">
+                    <Link href="/sobre">
+                        <a>Sobre</a>
+                    </Link>
+                    <Link href="/contato">
+                        <a>Contato</a>
+                    </Link>
+                    <Link href="/pesquisa">
+                        <a>Pesquisa</a>
+                    </Link>
+                </nav>
+            </div>
         </header>
     )
 }
