@@ -18,9 +18,6 @@ const Header = () => {
                     <Link href="/contato">
                         <a>Contato</a>
                     </Link>
-                    <Link href="/pesquisa">
-                        <a>Pesquisa</a>
-                    </Link>
                 </nav>
             </div>
         </header>
