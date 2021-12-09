@@ -30,7 +30,7 @@ Inicie o servidor de desenvolvimento:
 
 ## Tech Stack
 
-**Client:** React, Next.js, TailwindCSS
+**Client:** React, Next.js, SWR, TailwindCSS
 
 **Server:** Google Planilhas
 

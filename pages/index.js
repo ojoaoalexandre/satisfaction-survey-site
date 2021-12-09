@@ -7,6 +7,14 @@ const Index = () => {
     const [form, setForm] = useState({})
     const { data, error } = useSWR('/api/getMessage', fetcher)
 
+    const save = event => {
+        event.preventDefault()
+        const response = fetch(`/api/save`, {
+            method: 'POST',
+            body: JSON.stringify(form)
+        })
+    }
+
     const change = event => {
         event.preventDefault()
         const value = event.target.value
@@ -44,24 +52,24 @@ const Index = () => {
                     </header>
                     <div className="flex flex-col">
                         <label className="font-semibold">Nome</label>
-                        <input type="text" name="Nome" onChange={event => change(event)} className="border rounded-sm px-2" />
+                        <input type="text" name="name" onChange={event => change(event)} className="border rounded-sm px-2" />
                     </div>
                     <div className="flex flex-col">
                         <label className="font-semibold">Email</label>
-                        <input type="email" name="Email" onChange={event => change(event)} className="border rounded-sm px-2" />
+                        <input type="email" name="email" onChange={event => change(event)} className="border rounded-sm px-2" />
                     </div>
                     <div className="flex gap-4 text-sm text-gray-800">
-                        <button name="Nota" value="1" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 1 ? 'bg-red-500' : 'bg-gray-200'} font-bold`}>1</button>
-                        <button name="Nota" value="2" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 2 ? 'bg-red-700' : 'bg-gray-200'}`}>2</button>
-                        <button name="Nota" value="3" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 3 ? 'bg-yellow-500' : 'bg-gray-200'}`}>3</button>
-                        <button name="Nota" value="4" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 4 ? 'bg-green-500' : 'bg-gray-200'}`}>4</button>
-                        <button name="Nota" value="5" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 5 ? 'bg-green-800' : 'bg-gray-200'}`}>5</button>
+                        <button name="note" value="1" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 1 ? 'bg-red-500' : 'bg-gray-200'} font-bold`}>1</button>
+                        <button name="note" value="2" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 2 ? 'bg-red-700' : 'bg-gray-200'}`}>2</button>
+                        <button name="note" value="3" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 3 ? 'bg-yellow-500' : 'bg-gray-200'}`}>3</button>
+                        <button name="note" value="4" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 4 ? 'bg-green-500' : 'bg-gray-200'}`}>4</button>
+                        <button name="note" value="5" onClick={event => change(event)} className={`px-4 rounded-sm ${form.Nota >= 5 ? 'bg-green-800' : 'bg-gray-200'}`}>5</button>
                     </div>
                     <div className="flex flex-col">
                         <label>Sua Opinião</label>
-                        <textarea name="Serviço" rows="5" onChange={event => change(event)} className="border rounded-sm"></textarea>
+                        <textarea name="message" rows="5" onChange={event => change(event)} className="border rounded-sm"></textarea>
                     </div>
-                    <button>Avaliar</button>
+                    <button onClick={event => save(event)}>Avaliar</button>
                 </form>
             </div>
         </section>
