@@ -36,4 +36,4 @@ Inicie o servidor de desenvolvimento:
 
 ## Screenshots
 
-[Screenshot](./screen.gif)
+![Screenshot](./screen.gif)
