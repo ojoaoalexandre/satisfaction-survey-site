@@ -11,14 +11,14 @@ const Header = () => {
                     </a>
                 </Link>
 
-                <nav className="space-x-6">
+                {/* <nav className="space-x-6">
                     <Link href="/about">
                         <a>Sobre</a>
                     </Link>
                     <Link href="/contact">
                         <a>Contato</a>
                     </Link>
-                </nav>
+                </nav> */}
             </div>
         </header>
     )
