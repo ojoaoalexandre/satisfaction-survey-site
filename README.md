@@ -35,3 +35,5 @@ Inicie o servidor de desenvolvimento:
 **Server:** Google Planilhas
 
 ## Screenshots
+
+[Screenshot](./screen.gif)
