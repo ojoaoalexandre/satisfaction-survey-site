@@ -83,7 +83,7 @@ const Index = () => {
                                     </h2>
                                     <p className='text-sm max-w-sm'>Nos informe uma nota para a qualidade do atendimento</p>
                                 </header>
-                                <div className='flex gap-2'>
+                                <div className='flex gap-2 h-8'>
                                     <div className={`${form.attendance >= 1 ? 'text-yellow-500' : ''}`} >
                                         <Star name="attendance" value="1" size="8" handleClick={change} />
                                     </div>
