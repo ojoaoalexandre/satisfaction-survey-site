@@ -10,6 +10,12 @@ const Index = () => {
     const [form, setForm] = useState({})
     const [saveInput, setSaveInput] = useState({})
     const { data, error } = useSWR('/api/getMessage', fetcher)
+    const [hoverStar, setHoverStar] = useState({
+        attendance: '',
+        product: ''
+    })
+
+    const stars = [1, 2, 3, 4, 5]
 
     const save = async event => {
         event.preventDefault()
@@ -27,6 +33,29 @@ const Index = () => {
         setForm(old => ({
             ...old,
             [key]: value
+        }))
+    }
+
+    const hover = event => {
+        event.preventDefault()
+        const value = event.target.value
+        const key = event.target.name
+
+        setHoverStar(old => ({
+            ...old,
+            [key]: value
+        }))
+
+    }
+
+    const unHover = event => {
+        event.preventDefault()
+        const value = event.target.value
+        const key = event.target.name
+
+        setHoverStar(old => ({
+            ...old,
+            [key]: ''
         }))
     }
 
@@ -84,21 +113,13 @@ const Index = () => {
                                     <p className='text-sm max-w-sm'>Nos informe uma nota para a qualidade do atendimento</p>
                                 </header>
                                 <div className='flex gap-2 h-8'>
-                                    <div className={`${form.attendance >= 1 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="attendance" value="1" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.attendance >= 2 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="attendance" value="2" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.attendance >= 3 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="attendance" value="3" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.attendance >= 4 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="attendance" value="4" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.attendance >= 5 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="attendance" value="5" size="8" handleClick={change} />
-                                    </div>
+                                    {stars.map(star => {
+                                        return (
+                                            <div key={star} onMouseEnter={event => hover(event)} onMouseLeave={event => unHover(event)} className={`${(form.attendance >= star || hoverStar.attendance >= star) ? 'text-yellow-500' : 'text-gray-300'}`} >
+                                                <Star name="attendance" value={star} size="8" handleClick={change} />
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                                 {saveInput.fieldsRequiredEmpty && saveInput.fieldsRequiredEmpty.includes('attendance') &&
                                     <Message message="Informe sua nota" />
@@ -114,22 +135,14 @@ const Index = () => {
                                     </h2>
                                     <p className='text-sm max-w-sm'>Nos informe uma nota para a qualidade dos produtos e/ou serviços prestados</p>
                                 </header>
-                                <div className='flex gap-2'>
-                                    <div className={`${form.product >= 1 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="product" value="1" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.product >= 2 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="product" value="2" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.product >= 3 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="product" value="3" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.product >= 4 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="product" value="4" size="8" handleClick={change} />
-                                    </div>
-                                    <div className={`${form.product >= 5 ? 'text-yellow-500' : ''}`} >
-                                        <Star name="product" value="5" size="8" handleClick={change} />
-                                    </div>
+                                <div className='flex gap-2 h-8'>
+                                    {stars.map(star => {
+                                        return (
+                                            <div key={star} onMouseEnter={event => hover(event)} onMouseLeave={event => unHover(event)} className={`${(form.product >= star || hoverStar.product >= star) ? 'text-yellow-500' : 'text-gray-300'}`} >
+                                                <Star name="product" value={star} size="8" handleClick={change} />
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                                 {saveInput.fieldsRequiredEmpty && saveInput.fieldsRequiredEmpty.includes('product') &&
                                     <Message message="Informe sua nota" />
